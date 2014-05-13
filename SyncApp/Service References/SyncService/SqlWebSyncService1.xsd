@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Microsoft.Synchronization.Data" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Microsoft.Synchronization.Data" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/SyncWcfService/Service/SqlWebSyncService.svc?xsd=xsd1" namespace="http://schemas.datacontract.org/2004/07/Microsoft.Synchronization" />
+  <xs:import schemaLocation="http://localhost/SyncWcfService/Service/SqlWebSyncService.svc?xsd=xsd10" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://localhost/SyncWcfService/Service/SqlWebSyncService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/System.Data" />
+  <xs:complexType name="SyncSchema">
+    <xs:sequence>
+      <xs:element name="_dataSet" nillable="true">
+        <xs:complexType>
+          <xs:annotation>
+            <xs:appinfo>
+              <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+            </xs:appinfo>
+          </xs:annotation>
+          <xs:sequence>
+            <xs:element ref="xs:schema" />
+            <xs:any />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SyncSchema" nillable="true" type="tns:SyncSchema" />
+  <xs:complexType name="DbSyncContext">
+    <xs:sequence>
+      <xs:element name="_batchFileName" nillable="true" type="xs:string" />
+      <xs:element name="_dataSet" nillable="true">
+        <xs:complexType>
+          <xs:annotation>
+            <xs:appinfo>
+              <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+            </xs:appinfo>
+          </xs:annotation>
+          <xs:sequence>
+            <xs:element ref="xs:schema" />
+            <xs:any />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="_isDataBatched" type="xs:boolean" />
+      <xs:element name="_isLastBatch" type="xs:boolean" />
+      <xs:element name="_isPeerOutdated" type="xs:boolean" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Microsoft.Synchronization" name="_madeWithForgottenKnowledge" nillable="true" type="q1:ForgottenKnowledge" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Microsoft.Synchronization" name="_madeWithKnowledge" nillable="true" type="q2:SyncKnowledge" />
+      <xs:element name="_scopeProgress" nillable="true" type="tns:DbSyncScopeProgress" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DbSyncContext" nillable="true" type="tns:DbSyncContext" />
+  <xs:complexType name="DbSyncScopeProgress">
+    <xs:sequence>
+      <xs:element name="_dataSet" nillable="true">
+        <xs:complexType>
+          <xs:annotation>
+            <xs:appinfo>
+              <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+            </xs:appinfo>
+          </xs:annotation>
+          <xs:sequence>
+            <xs:element ref="xs:schema" />
+            <xs:any />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="_tablesProgress" nillable="true" type="tns:ArrayOfDbSyncTableProgress" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DbSyncScopeProgress" nillable="true" type="tns:DbSyncScopeProgress" />
+  <xs:complexType name="ArrayOfDbSyncTableProgress">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DbSyncTableProgress" nillable="true" type="tns:DbSyncTableProgress" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDbSyncTableProgress" nillable="true" type="tns:ArrayOfDbSyncTableProgress" />
+  <xs:complexType name="DbSyncTableProgress">
+    <xs:sequence>
+      <xs:element name="_batchFileName" nillable="true" type="xs:string" />
+      <xs:element name="_batchedDeletesRetried" type="xs:int" />
+      <xs:element name="_dataTable" nillable="true">
+        <xs:complexType>
+          <xs:annotation>
+            <xs:appinfo>
+              <ActualType Name="DataTable" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+            </xs:appinfo>
+          </xs:annotation>
+          <xs:sequence>
+            <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+            <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="_deletes" type="xs:int" />
+      <xs:element name="_inserts" type="xs:int" />
+      <xs:element name="_rowIndex" type="xs:int" />
+      <xs:element name="_rowsApplied" type="xs:int" />
+      <xs:element name="_rowsFailed" type="xs:int" />
+      <xs:element name="_tableName" nillable="true" type="xs:string" />
+      <xs:element name="_updates" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DbSyncTableProgress" nillable="true" type="tns:DbSyncTableProgress" />
+  <xs:complexType name="DbSyncScopeDescription">
+    <xs:sequence>
+      <xs:element name="_scopeName" nillable="true" type="xs:string" />
+      <xs:element name="_tables" nillable="true" type="tns:ArrayOfDbSyncTableDescription" />
+      <xs:element minOccurs="0" name="_userComment" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DbSyncScopeDescription" nillable="true" type="tns:DbSyncScopeDescription" />
+  <xs:complexType name="ArrayOfDbSyncTableDescription">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DbSyncTableDescription" nillable="true" type="tns:DbSyncTableDescription" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDbSyncTableDescription" nillable="true" type="tns:ArrayOfDbSyncTableDescription" />
+  <xs:complexType name="DbSyncTableDescription">
+    <xs:sequence>
+      <xs:element name="_columns" nillable="true" type="tns:ArrayOfDbSyncColumnDescription" />
+      <xs:element name="_constraints" nillable="true" type="tns:ArrayOfDbSyncForeignKeyConstraint" />
+      <xs:element name="_globalName" nillable="true" type="xs:string" />
+      <xs:element name="_localName" nillable="true" type="xs:string" />
+      <xs:element name="_unquotedGlobalName" nillable="true" type="xs:string" />
+      <xs:element name="_unquotedLocalName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DbSyncTableDescription" nillable="true" type="tns:DbSyncTableDescription" />
+  <xs:complexType name="ArrayOfDbSyncColumnDescription">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DbSyncColumnDescription" nillable="true" type="tns:DbSyncColumnDescription" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDbSyncColumnDescription" nillable="true" type="tns:ArrayOfDbSyncColumnDescription" />
+  <xs:complexType name="DbSyncColumnDescription">
+    <xs:sequence>
+      <xs:element name="_autoIncrementSeed" type="xs:long" />
+      <xs:element name="_autoIncrementSeedSpecified" type="xs:boolean" />
+      <xs:element name="_autoIncrementStep" type="xs:long" />
+      <xs:element name="_autoIncrementStepSpecified" type="xs:boolean" />
+      <xs:element name="_defaultValue" nillable="true" type="xs:string" />
+      <xs:element name="_defaultValueSpecified" type="xs:boolean" />
+      <xs:element name="_isNullable" type="xs:boolean" />
+      <xs:element name="_isPrimaryKey" type="xs:boolean" />
+      <xs:element name="_parameterName" nillable="true" type="xs:string" />
+      <xs:element name="_precision" type="xs:int" />
+      <xs:element name="_precisionSpecified" type="xs:boolean" />
+      <xs:element name="_quotedName" nillable="true" type="xs:string" />
+      <xs:element name="_scale" type="xs:int" />
+      <xs:element name="_scaleSpecified" type="xs:boolean" />
+      <xs:element name="_size" nillable="true" type="xs:string" />
+      <xs:element name="_sizeSpecified" type="xs:boolean" />
+      <xs:element name="_type" nillable="true" type="xs:string" />
+      <xs:element name="_unquotedName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DbSyncColumnDescription" nillable="true" type="tns:DbSyncColumnDescription" />
+  <xs:complexType name="ArrayOfDbSyncForeignKeyConstraint">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DbSyncForeignKeyConstraint" nillable="true" type="tns:DbSyncForeignKeyConstraint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDbSyncForeignKeyConstraint" nillable="true" type="tns:ArrayOfDbSyncForeignKeyConstraint" />
+  <xs:complexType name="DbSyncForeignKeyConstraint">
+    <xs:sequence>
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" name="_childColumns" nillable="true" type="q3:ArrayOfstring" />
+      <xs:element name="_childTableName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/System.Data" name="_deleteRule" type="q4:Rule" />
+      <xs:element name="_name" nillable="true" type="xs:string" />
+      <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" name="_parentColumns" nillable="true" type="q5:ArrayOfstring" />
+      <xs:element name="_parentTableName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/System.Data" name="_updateRule" type="q6:Rule" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DbSyncForeignKeyConstraint" nillable="true" type="tns:DbSyncForeignKeyConstraint" />
+</xs:schema>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="96cf2897-0325-4257-a739-ddcdea336671" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/SyncWcfService/Service/SqlWebSyncService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SqlWebSyncService.xsd" MetadataType="Schema" ID="e2e8f85c-6ada-4975-bd51-147539efa4ae" SourceId="1" SourceUrl="http://localhost/SyncWcfService/Service/SqlWebSyncService.svc?xsd=xsd1" />
+    <MetadataFile FileName="SqlWebSyncService1.xsd" MetadataType="Schema" ID="4b3c372c-56af-4e89-95c2-7f6b07ebdae7" SourceId="1" SourceUrl="http://localhost/SyncWcfService/Service/SqlWebSyncService.svc?xsd=xsd5" />
+    <MetadataFile FileName="SqlWebSyncService.disco" MetadataType="Disco" ID="2d7e68cf-31b7-4b89-bb00-916cae7a4514" SourceId="1" SourceUrl="http://localhost/SyncWcfService/Service/SqlWebSyncService.svc?disco" />
+    <MetadataFile FileName="SqlWebSyncService2.xsd" MetadataType="Schema" ID="45e67632-732c-4d6b-b9a3-50bf0a081539" SourceId="1" SourceUrl="http://localhost/SyncWcfService/Service/SqlWebSyncService.svc?xsd=xsd2" />
+    <MetadataFile FileName="SqlWebSyncService3.xsd" MetadataType="Schema" ID="285008ae-eb06-4b14-9219-038f616813a8" SourceId="1" SourceUrl="http://localhost/SyncWcfService/Service/SqlWebSyncService.svc?xsd=xsd10" />
+    <MetadataFile FileName="SqlWebSyncService.wsdl" MetadataType="Wsdl" ID="b1b97265-f824-42bf-b937-aeea95e06c0d" SourceId="1" SourceUrl="http://localhost/SyncWcfService/Service/SqlWebSyncService.svc?wsdl" />
+    <MetadataFile FileName="SqlWebSyncService4.xsd" MetadataType="Schema" ID="611a9b24-85f2-40fa-bae0-0e2be47776c0" SourceId="1" SourceUrl="http://localhost/SyncWcfService/Service/SqlWebSyncService.svc?xsd=xsd3" />
+    <MetadataFile FileName="SqlWebSyncService5.xsd" MetadataType="Schema" ID="70d1f876-d583-4d03-9b74-b123d9084860" SourceId="1" SourceUrl="http://localhost/SyncWcfService/Service/SqlWebSyncService.svc?xsd=xsd7" />
+    <MetadataFile FileName="SqlWebSyncService6.xsd" MetadataType="Schema" ID="5745e618-7a49-4005-9783-1493330c469c" SourceId="1" SourceUrl="http://localhost/SyncWcfService/Service/SqlWebSyncService.svc?xsd=xsd6" />
+    <MetadataFile FileName="SqlWebSyncService7.xsd" MetadataType="Schema" ID="880e78ac-f433-4c72-9dd9-1e2824605816" SourceId="1" SourceUrl="http://localhost/SyncWcfService/Service/SqlWebSyncService.svc?xsd=xsd8" />
+    <MetadataFile FileName="SqlWebSyncService8.xsd" MetadataType="Schema" ID="57c00e38-a733-4b51-b5e8-caaf4fef9566" SourceId="1" SourceUrl="http://localhost/SyncWcfService/Service/SqlWebSyncService.svc?xsd=xsd0" />
+    <MetadataFile FileName="SqlWebSyncService9.xsd" MetadataType="Schema" ID="f62e9bff-7f4d-44df-9a60-160e21a83ee9" SourceId="1" SourceUrl="http://localhost/SyncWcfService/Service/SqlWebSyncService.svc?xsd=xsd4" />
+    <MetadataFile FileName="SqlWebSyncService10.xsd" MetadataType="Schema" ID="7cb1ad9a-92e0-46be-be6f-1cdd12473532" SourceId="1" SourceUrl="http://localhost/SyncWcfService/Service/SqlWebSyncService.svc?xsd=xsd9" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SqlWebSyncService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="WSHttpBinding_ISqlSyncContract_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
+          <wsrm:InactivityTimeout Milliseconds="600000" />
+          <wsrm:AcknowledgementInterval Milliseconds="200" />
+        </wsrm:RMAssertion>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost/SyncWcfService/Service/SqlWebSyncService.svc?xsd=xsd9" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost/SyncWcfService/Service/SqlWebSyncService.svc?xsd=xsd0" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost/SyncWcfService/Service/SqlWebSyncService.svc?xsd=xsd1" namespace="http://schemas.datacontract.org/2004/07/Microsoft.Synchronization" />
+      <xsd:import schemaLocation="http://localhost/SyncWcfService/Service/SqlWebSyncService.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2009/04/sync/" />
+      <xsd:import schemaLocation="http://localhost/SyncWcfService/Service/SqlWebSyncService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/SyncWcfService.Interface" />
+      <xsd:import schemaLocation="http://localhost/SyncWcfService/Service/SqlWebSyncService.svc?xsd=xsd4" />
+      <xsd:import schemaLocation="http://localhost/SyncWcfService/Service/SqlWebSyncService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Microsoft.Synchronization.Data" />
+      <xsd:import schemaLocation="http://localhost/SyncWcfService/Service/SqlWebSyncService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/System.Data" />
+      <xsd:import schemaLocation="http://localhost/SyncWcfService/Service/SqlWebSyncService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/SyncWcfService.Fault" />
+      <xsd:import schemaLocation="http://localhost/SyncWcfService/Service/SqlWebSyncService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/System" />
+      <xsd:import schemaLocation="http://localhost/SyncWcfService/Service/SqlWebSyncService.svc?xsd=xsd10" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ISqlSyncContract_Initialize_InputMessage">
+    <wsdl:part name="parameters" element="tns:Initialize" />
+  </wsdl:message>
+  <wsdl:message name="ISqlSyncContract_Initialize_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InitializeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISqlSyncContract_BeginSession_InputMessage">
+    <wsdl:part name="parameters" element="tns:BeginSession" />
+  </wsdl:message>
+  <wsdl:message name="ISqlSyncContract_BeginSession_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BeginSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISqlSyncContract_GetKnowledge_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetKnowledge" />
+  </wsdl:message>
+  <wsdl:message name="ISqlSyncContract_GetKnowledge_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetKnowledgeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISqlSyncContract_GetChanges_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetChanges" />
+  </wsdl:message>
+  <wsdl:message name="ISqlSyncContract_GetChanges_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetChangesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISqlSyncContract_ApplyChanges_InputMessage">
+    <wsdl:part name="parameters" element="tns:ApplyChanges" />
+  </wsdl:message>
+  <wsdl:message name="ISqlSyncContract_ApplyChanges_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ApplyChangesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISqlSyncContract_HasUploadedBatchFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:HasUploadedBatchFile" />
+  </wsdl:message>
+  <wsdl:message name="ISqlSyncContract_HasUploadedBatchFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:HasUploadedBatchFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISqlSyncContract_UploadBatchFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadBatchFile" />
+  </wsdl:message>
+  <wsdl:message name="ISqlSyncContract_UploadBatchFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadBatchFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISqlSyncContract_DownloadBatchFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:DownloadBatchFile" />
+  </wsdl:message>
+  <wsdl:message name="ISqlSyncContract_DownloadBatchFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DownloadBatchFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISqlSyncContract_EndSession_InputMessage">
+    <wsdl:part name="parameters" element="tns:EndSession" />
+  </wsdl:message>
+  <wsdl:message name="ISqlSyncContract_EndSession_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EndSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISqlSyncContract_Cleanup_InputMessage">
+    <wsdl:part name="parameters" element="tns:Cleanup" />
+  </wsdl:message>
+  <wsdl:message name="ISqlSyncContract_Cleanup_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CleanupResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISqlSyncContract_CreateScopeDescription_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateScopeDescription" />
+  </wsdl:message>
+  <wsdl:message name="ISqlSyncContract_CreateScopeDescription_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateScopeDescriptionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISqlSyncContract_CreateScopeDescription_WebSyncFaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/SyncWcfService.Fault" name="detail" element="q1:WebSyncFaultException" />
+  </wsdl:message>
+  <wsdl:message name="ISqlSyncContract_GetScopeDescription_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetScopeDescription" />
+  </wsdl:message>
+  <wsdl:message name="ISqlSyncContract_GetScopeDescription_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetScopeDescriptionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISqlSyncContract_GetScopeDescription_WebSyncFaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/SyncWcfService.Fault" name="detail" element="q2:WebSyncFaultException" />
+  </wsdl:message>
+  <wsdl:message name="ISqlSyncContract_NeedsScope_InputMessage">
+    <wsdl:part name="parameters" element="tns:NeedsScope" />
+  </wsdl:message>
+  <wsdl:message name="ISqlSyncContract_NeedsScope_OutputMessage">
+    <wsdl:part name="parameters" element="tns:NeedsScopeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISqlSyncContract_NeedsScope_WebSyncFaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/SyncWcfService.Fault" name="detail" element="q3:WebSyncFaultException" />
+  </wsdl:message>
+  <wsdl:message name="ISqlSyncContract_Sync_InputMessage">
+    <wsdl:part name="parameters" element="tns:Sync" />
+  </wsdl:message>
+  <wsdl:message name="ISqlSyncContract_Sync_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISqlSyncContract_Sync_WebSyncFaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/SyncWcfService.Fault" name="detail" element="q4:WebSyncFaultException" />
+  </wsdl:message>
+  <wsdl:portType msc:usingSession="true" name="ISqlSyncContract">
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Initialize">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRelationalSyncContract/Initialize" message="tns:ISqlSyncContract_Initialize_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRelationalSyncContract/InitializeResponse" message="tns:ISqlSyncContract_Initialize_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="BeginSession">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRelationalSyncContract/BeginSession" message="tns:ISqlSyncContract_BeginSession_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRelationalSyncContract/BeginSessionResponse" message="tns:ISqlSyncContract_BeginSession_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GetKnowledge">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRelationalSyncContract/GetKnowledge" message="tns:ISqlSyncContract_GetKnowledge_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRelationalSyncContract/GetKnowledgeResponse" message="tns:ISqlSyncContract_GetKnowledge_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GetChanges">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRelationalSyncContract/GetChanges" message="tns:ISqlSyncContract_GetChanges_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRelationalSyncContract/GetChangesResponse" message="tns:ISqlSyncContract_GetChanges_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="ApplyChanges">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRelationalSyncContract/ApplyChanges" message="tns:ISqlSyncContract_ApplyChanges_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRelationalSyncContract/ApplyChangesResponse" message="tns:ISqlSyncContract_ApplyChanges_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="HasUploadedBatchFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRelationalSyncContract/HasUploadedBatchFile" message="tns:ISqlSyncContract_HasUploadedBatchFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRelationalSyncContract/HasUploadedBatchFileResponse" message="tns:ISqlSyncContract_HasUploadedBatchFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="UploadBatchFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRelationalSyncContract/UploadBatchFile" message="tns:ISqlSyncContract_UploadBatchFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRelationalSyncContract/UploadBatchFileResponse" message="tns:ISqlSyncContract_UploadBatchFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="DownloadBatchFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRelationalSyncContract/DownloadBatchFile" message="tns:ISqlSyncContract_DownloadBatchFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRelationalSyncContract/DownloadBatchFileResponse" message="tns:ISqlSyncContract_DownloadBatchFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="EndSession">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRelationalSyncContract/EndSession" message="tns:ISqlSyncContract_EndSession_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRelationalSyncContract/EndSessionResponse" message="tns:ISqlSyncContract_EndSession_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="true" name="Cleanup">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRelationalSyncContract/Cleanup" message="tns:ISqlSyncContract_Cleanup_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRelationalSyncContract/CleanupResponse" message="tns:ISqlSyncContract_Cleanup_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="CreateScopeDescription">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISqlSyncContract/CreateScopeDescription" message="tns:ISqlSyncContract_CreateScopeDescription_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISqlSyncContract/CreateScopeDescriptionResponse" message="tns:ISqlSyncContract_CreateScopeDescription_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISqlSyncContract/CreateScopeDescriptionWebSyncFaultExceptionFault" name="WebSyncFaultExceptionFault" message="tns:ISqlSyncContract_CreateScopeDescription_WebSyncFaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GetScopeDescription">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISqlSyncContract/GetScopeDescription" message="tns:ISqlSyncContract_GetScopeDescription_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISqlSyncContract/GetScopeDescriptionResponse" message="tns:ISqlSyncContract_GetScopeDescription_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISqlSyncContract/GetScopeDescriptionWebSyncFaultExceptionFault" name="WebSyncFaultExceptionFault" message="tns:ISqlSyncContract_GetScopeDescription_WebSyncFaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="NeedsScope">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISqlSyncContract/NeedsScope" message="tns:ISqlSyncContract_NeedsScope_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISqlSyncContract/NeedsScopeResponse" message="tns:ISqlSyncContract_NeedsScope_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISqlSyncContract/NeedsScopeWebSyncFaultExceptionFault" name="WebSyncFaultExceptionFault" message="tns:ISqlSyncContract_NeedsScope_WebSyncFaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Sync">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISqlSyncContract/Sync" message="tns:ISqlSyncContract_Sync_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISqlSyncContract/SyncResponse" message="tns:ISqlSyncContract_Sync_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISqlSyncContract/SyncWebSyncFaultExceptionFault" name="WebSyncFaultExceptionFault" message="tns:ISqlSyncContract_Sync_WebSyncFaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSHttpBinding_ISqlSyncContract" type="tns:ISqlSyncContract">
+    <wsp:PolicyReference URI="#WSHttpBinding_ISqlSyncContract_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Initialize">
+      <soap12:operation soapAction="http://tempuri.org/IRelationalSyncContract/Initialize" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BeginSession">
+      <soap12:operation soapAction="http://tempuri.org/IRelationalSyncContract/BeginSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKnowledge">
+      <soap12:operation soapAction="http://tempuri.org/IRelationalSyncContract/GetKnowledge" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChanges">
+      <soap12:operation soapAction="http://tempuri.org/IRelationalSyncContract/GetChanges" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApplyChanges">
+      <soap12:operation soapAction="http://tempuri.org/IRelationalSyncContract/ApplyChanges" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HasUploadedBatchFile">
+      <soap12:operation soapAction="http://tempuri.org/IRelationalSyncContract/HasUploadedBatchFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadBatchFile">
+      <soap12:operation soapAction="http://tempuri.org/IRelationalSyncContract/UploadBatchFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadBatchFile">
+      <soap12:operation soapAction="http://tempuri.org/IRelationalSyncContract/DownloadBatchFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EndSession">
+      <soap12:operation soapAction="http://tempuri.org/IRelationalSyncContract/EndSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Cleanup">
+      <soap12:operation soapAction="http://tempuri.org/IRelationalSyncContract/Cleanup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateScopeDescription">
+      <soap12:operation soapAction="http://tempuri.org/ISqlSyncContract/CreateScopeDescription" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="WebSyncFaultExceptionFault">
+        <soap12:fault use="literal" name="WebSyncFaultExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetScopeDescription">
+      <soap12:operation soapAction="http://tempuri.org/ISqlSyncContract/GetScopeDescription" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="WebSyncFaultExceptionFault">
+        <soap12:fault use="literal" name="WebSyncFaultExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="NeedsScope">
+      <soap12:operation soapAction="http://tempuri.org/ISqlSyncContract/NeedsScope" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="WebSyncFaultExceptionFault">
+        <soap12:fault use="literal" name="WebSyncFaultExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Sync">
+      <soap12:operation soapAction="http://tempuri.org/ISqlSyncContract/Sync" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="WebSyncFaultExceptionFault">
+        <soap12:fault use="literal" name="WebSyncFaultExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SqlWebSyncService">
+    <wsdl:port name="WSHttpBinding_ISqlSyncContract" binding="tns:WSHttpBinding_ISqlSyncContract">
+      <soap12:address location="http://localhost/SyncWcfService/Service/SqlWebSyncService.svc" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>http://localhost/SyncWcfService/Service/SqlWebSyncService.svc</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
